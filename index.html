@@ -11,7 +11,7 @@
       integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.min.css" />
     <title>funny style</title>
   </head>
 
@@ -101,105 +101,6 @@
         <p><small>Copyright &copy; 2022 Yoshihiro Takahashi</small></p>
       </footer>
     </div>
-    <script>
-      "use strict";
-      const nextBtn = document.querySelector("#next");
-      const prevBtn = document.querySelector("#prev");
-      const mainImgLi = document.querySelectorAll(".imgArea li");
-      const imgBtns = document.querySelectorAll("nav ul li");
-      const msgH1s = document.querySelectorAll(".message-title");
-      const msgH1_ = document.querySelector(".message-title");
-      const msgH1_all = document.querySelectorAll(".message-title");
-      const miniImg = document.querySelectorAll(".message-contents img");
-      let no = 0;
-      let index = 0;
-      let oldIndex = 0;
-
-      let removeClass = () => {
-        mainImgLi.forEach((img) => {
-          img.classList.remove("fadeIn2");
-          img.classList.remove("fadeIn");
-          img.classList.remove("fadeOut");
-          img.classList.remove("fadeOut2");
-        });
-      };
-      nextBtn.addEventListener("mousedown", () => {
-        //マウスボタンを押した瞬間にclassを削除
-        removeClass();
-      });
-      prevBtn.addEventListener("mousedown", () => {
-        //マウスボタンを押した瞬間にclassを削除
-        removeClass();
-      });
-      nextBtn.addEventListener("click", () => {
-        no++;
-        if (no === 5) {
-          no = 0;
-        }
-        console.log(no);
-
-        mainImgLi.forEach((img) => {
-          img.style.opacity = 0;
-        });
-
-        mainImgLi[no].style.opacity = 1;
-        mainImgLi[no].classList.add("fadeIn");
-        if (no === 0) {
-          mainImgLi[4].classList.add("fadeOut");
-        } else {
-          mainImgLi[no - 1].classList.add("fadeOut");
-        }
-      });
-      prevBtn.addEventListener("click", () => {
-        no--;
-        if (no === -1) {
-          no = 4;
-        }
-        console.log(no);
-        mainImgLi.forEach((img) => {
-          img.style.opacity = 0;
-        });
-
-        mainImgLi[no].style.opacity = 1;
-        mainImgLi[no].classList.add("fadeIn");
-        if (no === 4) {
-          mainImgLi[0].classList.add("fadeOut");
-        } else {
-          mainImgLi[no + 1].classList.add("fadeOut");
-        }
-      });
-
-      imgBtns.forEach((btn) => {
-        btn.addEventListener("mouseenter", () => {
-          btn.style.opacity = 0.5;
-        });
-        btn.addEventListener("mouseleave", () => {
-          btn.style.opacity = 1;
-        });
-        btn.addEventListener("mousedown", () => {
-          removeClass();
-        });
-        btn.addEventListener("click", () => {
-          oldIndex = index;
-          index = Array.from(imgBtns).indexOf(btn);
-          console.log(index);
-          no = index;
-          mainImgLi.forEach((img) => {
-            img.style.opacity = 0;
-          });
-          if (oldIndex !== index) {
-            mainImgLi[oldIndex].classList.add("fadeOut2");
-          }
-          mainImgLi[index].style.opacity = 1;
-          mainImgLi[index].classList.add("fadeIn2");
-        });
-      });
-
-      msgH1s.forEach((h1) => {
-        h1.addEventListener("click", () => {
-          h1.nextElementSibling.classList.toggle("none");
-        });
-      });
-    </script>
+    <script src="js/action.min.js"></script>
   </body>
 </html>
